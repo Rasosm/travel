@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Hotel;
+use App\Models\Country;
 use Illuminate\Http\Request;
 
 class HotelController extends Controller
@@ -24,7 +25,10 @@ class HotelController extends Controller
      */
     public function create()
     {
-        //
+        $countries = Country::all()->sortBy('title');
+        return view('back.hotels.create', [
+            'countries' => $countries
+        ]);
     }
 
     /**
@@ -35,7 +39,15 @@ class HotelController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $hotel = new Hotel;
+
+        $hotel->country_id = $request->country_id;
+        $hotel->title = $request->hotel_title;
+        $hotel->duration = $request->hotel_duration;
+        $hotel->price = $request->hotel_price;
+
+        $hotel->save();
+        return redirect()->route('hotels-index');
     }
 
     /**
