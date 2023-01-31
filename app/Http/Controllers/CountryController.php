@@ -14,7 +14,12 @@ class CountryController extends Controller
      */
     public function index()
     {
-        //
+        $countries = Country::all()->sortBy('title');
+        return view('back.countries.index', [
+            'countries' => $countries
+
+        ]);
+
     }
 
     /**
@@ -24,7 +29,7 @@ class CountryController extends Controller
      */
     public function create()
     {
-        //
+        return view('back.countries.create');
     }
 
     /**
@@ -35,7 +40,13 @@ class CountryController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $country = new Country;
+        $country->title = $request->country_title;
+        $country->season = $request->country_season;
+        
+        $country->save();
+
+        return redirect()->route('countries-index')->with('ok', 'Sveikinu, sėkmingai sukūrėte naują sąskaitą');
     }
 
     /**
@@ -57,7 +68,9 @@ class CountryController extends Controller
      */
     public function edit(Country $country)
     {
-        //
+        return view('back.countries.edit',[
+            'country' => $country
+        ]);
     }
 
     /**
@@ -69,7 +82,12 @@ class CountryController extends Controller
      */
     public function update(Request $request, Country $country)
     {
-        //
+        $country->title = $request->country_title;
+        $country->season = $request->country_season;
+        
+        $country->save();
+
+        return redirect()->route('countries-index')->with('ok', 'Sveikinu, sėkmingai sukūrėte naują sąskaitą');
     }
 
     /**
@@ -80,6 +98,7 @@ class CountryController extends Controller
      */
     public function destroy(Country $country)
     {
-        //
+        $country->delete();
+        return redirect()->route('countries-index');
     }
 }
