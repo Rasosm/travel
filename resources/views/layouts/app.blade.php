@@ -37,11 +37,21 @@
                     <ul class="navbar-nav ms-auto">
                         <li class="nav-item dropdown">
                             <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
+                                Hotels
+                            </a>
+                            <div class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
+                                <a class="dropdown-item" href="{{ route('hotels-index') }}">Hotel List</a>
+                                <a class="dropdown-item" href="{{ route('hotels-create') }}">New hotel</a>
+                            </div>
+                        </li>
+
+                        <li class="nav-item dropdown">
+                            <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
                                 Countries
                             </a>
                             <div class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
                                 <a class="dropdown-item" href="{{ route('countries-index') }}">Country List</a>
-                                <a class="dropdown-item" href="{{ route('countries-create') }}">Country Create</a>
+                                <a class="dropdown-item" href="{{ route('countries-create') }}">New Country</a>
                             </div>
                         </li>
 

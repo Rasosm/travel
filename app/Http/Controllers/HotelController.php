@@ -15,9 +15,15 @@ class HotelController extends Controller
      */
     public function index()
     {
-        //
+        $hotels = Hotel::all()->sortBy('title');
+        return view('back.hotels.index', [
+            'hotels' => $hotels
+
+        ]);
     }
 
+
+    
     /**
      * Show the form for creating a new resource.
      *
@@ -40,6 +46,24 @@ class HotelController extends Controller
     public function store(Request $request)
     {
         $hotel = new Hotel;
+
+         if ($request->file('photo')) {
+            $photo = $request->file('photo');
+
+            $ext = $photo->getClientOriginalExtension();
+            $name = pathinfo($photo->getClientOriginalName(), PATHINFO_FILENAME);
+            $file = $name. '-' . rand(100000, 999999). '.' . $ext;
+            
+            // $Image = Image::make($photo)->pixelate(12);
+            // $Image->save(public_path().'/trucks/'.$file);
+
+            if ($hotel->photo) {
+                $hotel->deletePhoto();
+            }
+            $photo->move(public_path().'/hotels', $file);
+            $hotel->photo = '/hotels/' . $file;
+        }
+
 
         $hotel->country_id = $request->country_id;
         $hotel->title = $request->hotel_title;
@@ -69,7 +93,11 @@ class HotelController extends Controller
      */
     public function edit(Hotel $hotel)
     {
-        //
+        $countries = Country::all()->sortBy('title');
+        return view('back.hotels.edit',[
+            'hotel' => $hotel,
+            'countries' => $countries
+        ]);
     }
 
     /**
@@ -81,7 +109,13 @@ class HotelController extends Controller
      */
     public function update(Request $request, Hotel $hotel)
     {
-        //
+        $hotel->country_id = $request->country_id;
+        $hotel->title = $request->hotel_title;
+        $hotel->duration = $request->hotel_duration;
+        $hotel->price = $request->hotel_price;
+
+        $hotel->save();
+        return redirect()->route('hotels-index');
     }
 
     /**
@@ -92,6 +126,7 @@ class HotelController extends Controller
      */
     public function destroy(Hotel $hotel)
     {
-        //
+        $hotel->delete();
+        return redirect()->back()->with('ok', 'Drink was deleted');
     }
 }

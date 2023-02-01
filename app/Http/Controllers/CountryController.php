@@ -98,7 +98,10 @@ class CountryController extends Controller
      */
     public function destroy(Country $country)
     {
-        $country->delete();
-        return redirect()->route('countries-index');
+        if(!$country->countryHotels()->count()){
+            $country->delete();
+            return redirect()->route('countries-index');
+        }
+        return 'negalima';
     }
 }
