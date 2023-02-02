@@ -6,3 +6,21 @@
 
 // Bootstrap
 @import 'bootstrap/scss/bootstrap';
+
+
+.list-table {
+    border: 1px solid cornflowerblue;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+.smallimg {
+    display: flex;
+    justify-content: center;
+
+    img {
+        width: 100%;
+        max-width: 220px;
+        height: auto;
+    }
+}

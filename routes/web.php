@@ -3,6 +3,7 @@
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\HotelController as H;
 use App\Http\Controllers\CountryController as C;
+use App\Http\Controllers\FrontController as F;
 
 /*
 |--------------------------------------------------------------------------
@@ -18,6 +19,8 @@ use App\Http\Controllers\CountryController as C;
 // Route::get('/', function () {
 //     return view('welcome');
 // });
+
+Route::get('/', [F::class, 'home'])->name('home');
 
 Route::prefix('admin/countries')->name('countries-')->group(function () {
     Route::get('/', [C::class, 'index'])->name('index');

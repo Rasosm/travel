@@ -6,3 +6,12 @@
 
 // Bootstrap
 @import 'bootstrap/scss/bootstrap';
+
+.smallimg {
+    width: 10%;
+
+    img {
+        height: 40px;
+        width: auto;
+    }
+}
