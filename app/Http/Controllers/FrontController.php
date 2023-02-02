@@ -15,4 +15,24 @@ class FrontController extends Controller
             'hotels' => $hotels
         ]);
     }
+    public function showHotel(Hotel $hotel)
+    {
+        return view('front.hotel', [
+            'hotel' => $hotel
+        ]);
+    }
+    public function addToCart(Request $request)
+    {
+        $cart = $request->session()->get('cart', []);
+        $id = (int) $request->product;
+        $count = (int) $request->count;
+        if (isset($cart[$id])) {
+            $cart[$id] += $count;
+        }
+        else {
+            $cart[$id] = $count;
+        }
+        $request->session()->put('cart', $cart);
+        return redirect()->back();
+    }
 }

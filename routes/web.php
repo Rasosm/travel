@@ -21,6 +21,8 @@ use App\Http\Controllers\FrontController as F;
 // });
 
 Route::get('/', [F::class, 'home'])->name('home');
+Route::get('/hotel/{hotel}', [F::class, 'showHotel'])->name('show-hotel');
+Route::post('/add-to-cart', [F::class, 'addToCart'])->name('add-to-cart');
 
 Route::prefix('admin/countries')->name('countries-')->group(function () {
     Route::get('/', [C::class, 'index'])->name('index');
