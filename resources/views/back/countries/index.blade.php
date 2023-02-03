@@ -17,7 +17,8 @@
                             <div class="list-table">
                                 <div class="list-table__content">
                                     <h3>{{$country->title}}</h3>
-                                    <h5>{{$country->season}}</h5>
+                                    <h5>{{$country->season_start}} - {{$country->season_end}}</h5>
+
                                 </div>
                                 <div class="list-table__buttons">
                                     <a href="{{route('countries-edit', $country)}}" class="btn btn-outline-success">Edit</a>

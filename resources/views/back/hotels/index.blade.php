@@ -105,6 +105,9 @@
                     <div class="smallimg">
                         @if($hotel->photo)
                         <img src="{{asset($hotel->photo)}}">
+                        @else
+                        <img src="{{asset('/hotels/no.jpg')}}">
+
                         @endif
                     </div>
                     <div>

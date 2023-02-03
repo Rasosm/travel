@@ -18,10 +18,14 @@
                             <input type="text" name="country_title" class="form-control" value="{{$country->title}}">
                         </div>
                         <div class="mb-3">
-                            <label class="form-label">Season</label>
-                            <input type="text" name="country_season" class="form-control" value="{{$country->season}}">
-
+                            <label class="form-label">Season start</label>
+                            <input type="date" name="country_season_start" class="form-control" value="{{$country->season_start}}">
                         </div>
+                        <div class="mb-3">
+                            <label class="form-label">Season end</label>
+                            <input type="date" name="country_season_end" class="form-control" value="{{$country->season_end}}">
+                        </div>
+
                         <div class="mb-3" style="justify-content: center; display: flex">
                             <button type="submit" class="btn btn-outline-info mt-4">Save</button>
                         </div>

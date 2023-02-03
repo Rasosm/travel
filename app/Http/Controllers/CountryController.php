@@ -42,7 +42,8 @@ class CountryController extends Controller
     {
         $country = new Country;
         $country->title = $request->country_title;
-        $country->season = $request->country_season;
+        $country->season_start = $request->country_season_start;
+        $country->season_end = $request->country_season_end;
         
         $country->save();
 
@@ -83,7 +84,8 @@ class CountryController extends Controller
     public function update(Request $request, Country $country)
     {
         $country->title = $request->country_title;
-        $country->season = $request->country_season;
+        $country->season_start = $request->country_season_start;
+        $country->season_end = $request->country_season_end;
         
         $country->save();
 

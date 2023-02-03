@@ -31,6 +31,33 @@ class DatabaseSeeder extends Seeder
             'role' => 'manager'
         ]);
 
+
+         $faker = Faker::create();
+
+        foreach(range(1, 21) as $i) {
+            $month = rand(1,5);
+            $day = rand(1, 28);
+            $monthEnd = rand(6,12);
+            $dayEnd = rand(1, 28);
+            DB::table('countries')->insert([
+                'title' => $faker->country,
+                'season_start' => '2023-'.$month.'-'.$day,
+                'season_end' => '2023-'.$monthEnd.'-'.$dayEnd
+            ]);
+        }
+
+         foreach(range(1, 21) as $i) {
+             $price = rand(359, 5970);
+                $duration = rand(1,14);
+            DB::table('hotels')->insert([
+                               'title' => $faker->city,
+                'price' => $price,
+                'duration' => $duration,
+                'country_id' => $i
+            ]);
+        }
+        
+
         
     }
 

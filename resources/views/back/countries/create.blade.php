@@ -18,8 +18,12 @@
                             <input type="text" name="country_title" class="form-control" placeholder="country" value="{{old('country_title')}}">
                         </div>
                         <div class="mb-3">
-                            <label class="form-label">Season</label>
-                            <input type="text" name="country_season" class="form-control" placeholder="season" value="{{old('country_season')}}">
+                            <label class="form-label">Season start</label>
+                            <input type="date" name="country_season_start" class="form-control" placeholder="season start" value="{{old('country_season')}}">
+                        </div>
+                        <div class="mb-3">
+                            <label class="form-label">Season end</label>
+                            <input type="date" name="country_season_end" class="form-control" placeholder="season end" value="{{old('country_season')}}">
                         </div>
                         <div class="mb-3" style="justify-content: center; display: flex">
                             <button type="submit" class="btn btn-outline-info mt-4">Save</button>
