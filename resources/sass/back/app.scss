@@ -15,10 +15,19 @@
         width: auto;
     }
 }
+.img {
+    height: 200px;
 
-.card-body{
-    width: 100%;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
+    img {
+        display: block;
+        height: 200px;
+        width: auto;
+    }
 }
+
+// .card-body{
+//     width: 100%;
+//     display: flex;
+//     justify-content: space-between;
+//     align-items: center;
+// }

@@ -107,19 +107,16 @@
                         <img src="{{asset($hotel->photo)}}">
                         @endif
                     </div>
+                    <div>
+                        <form action="{{route('hotels-delete', $hotel)}}" method="post">
+                            <button style="float: right; color: red;" type="submit" class="btn btn-outline-info mt-4">Delete</button>
+                            @csrf
+                            @method('delete')
+                        </form>
 
-                </div>
-                <div>
-                    <form action="{{route('hotels-delete', $hotel)}}" method="post">
-                        <button style="float: right; color: red;" type="submit" class="btn btn-outline-info mt-4">Delete</button>
-                        @csrf
-                        @method('delete')
-                    </form>
+                        <button style="float: right; margin-right: 7px;" type="submit" class="btn btn-outline-info mt-4"><a style="text-decoration: none" href="{{route('hotels-edit', $hotel)}}">Edit</a></button>
 
-                    <button style="float: right; margin-right: 7px;" type="submit" class="btn btn-outline-info mt-4"><a style="text-decoration: none" href="{{route('hotels-edit', $hotel)}}">Edit</a></button>
-
-
-
+                    </div>
                 </div>
             </div>
 

@@ -109,6 +109,29 @@ class HotelController extends Controller
      */
     public function update(Request $request, Hotel $hotel)
     {
+        if ($request->delete_photo) {
+            $hotel->deletePhoto();
+            return redirect()->back()->with('ok', 'Photo was deleted');
+        }
+
+        if ($request->file('photo')) {
+            $photo = $request->file('photo');
+
+            $ext = $photo->getClientOriginalExtension();
+            $name = pathinfo($photo->getClientOriginalName(), PATHINFO_FILENAME);
+            $file = $name. '-' . rand(100000, 999999). '.' . $ext;
+            
+            // $Image = Image::make($photo)->pixelate(12);
+            // $Image->save(public_path().'/trucks/'.$file);
+
+            if ($hotel->photo) {
+                $hotel->deletePhoto();
+            }
+            $photo->move(public_path().'/hotels', $file);
+            $hotel->photo = '/hotels/' . $file;
+        }
+        
+
         $hotel->country_id = $request->country_id;
         $hotel->title = $request->hotel_title;
         $hotel->duration = $request->hotel_duration;

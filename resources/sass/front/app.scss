@@ -9,10 +9,15 @@
 
 
 .list-table {
-    border: 1px solid cornflowerblue;
     display: flex;
-    flex-direction: column;
-    justify-content: space-between;
+        flex-direction: column;
+        justify-content: space-between;
+    box-shadow: 0px 0px 50px 11px rgba(95, 138, 236, 0.05);
+        border-radius: 20px;
+        width: 300px;
+        height: 300px;
+
+    
 }
 .smallimg {
     display: flex;
