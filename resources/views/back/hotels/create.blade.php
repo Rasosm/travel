@@ -46,6 +46,12 @@
                                 <input type="file" class="form-control" name="photo">
                             </div>
                         </div>
+                        <div class="col-9">
+                            <div class="mb-3">
+                                <label class="form-label">Hotel description</label>
+                                <textarea class="form-control" rows="10" name="hotel_desc">{{old('hotel_desc')}}</textarea>
+                            </div>
+                        </div>
 
 
                         <div class="mb-3" style="justify-content: center; display: flex">

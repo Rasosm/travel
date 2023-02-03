@@ -53,7 +53,8 @@ class DatabaseSeeder extends Seeder
                                'title' => $faker->city,
                 'price' => $price,
                 'duration' => $duration,
-                'country_id' => $i
+                'country_id' => $i,
+                'desc' => $faker->realText(500, 5)
             ]);
         }
         

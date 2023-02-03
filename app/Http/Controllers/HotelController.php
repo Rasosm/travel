@@ -69,6 +69,7 @@ class HotelController extends Controller
         $hotel->title = $request->hotel_title;
         $hotel->duration = $request->hotel_duration;
         $hotel->price = $request->hotel_price;
+        $hotel->desc = $request->hotel_desc;
 
         $hotel->save();
         return redirect()->route('hotels-index');
@@ -136,6 +137,7 @@ class HotelController extends Controller
         $hotel->title = $request->hotel_title;
         $hotel->duration = $request->hotel_duration;
         $hotel->price = $request->hotel_price;
+        $hotel->desc = $request->hotel_desc;
 
         $hotel->save();
         return redirect()->route('hotels-index');

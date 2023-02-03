@@ -21,6 +21,7 @@ return new class extends Migration
             $table->string('photo', 200)->nullable();
             $table->unsignedBigInteger('country_id');
             $table->foreign('country_id')->references('id')->on('countries');
+            $table->text('desc')->nullable();
             $table->timestamps();
         });
     }
