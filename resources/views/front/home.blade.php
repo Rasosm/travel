@@ -54,7 +54,7 @@
 
 
                                 <div class="card-header">
-                                    <p class="card-title" style="font-size: 18px; font-weight: bold; line-height: 1.4">{{$hotel->title}}</p>
+                                    <p class="card-title" style="font-size: 18px; font-weight: bold; line-height: 1.4">{{$hotel->title}}***</p>
                                     <p class="card-title">{{$hotel->hotelCountry->title}}</p>
                                 </div>
                                 <div class="card-body">
@@ -66,7 +66,7 @@
 
                                     <form action="{{route('add-to-cart')}}" method="post">
                                         <button type="submit" class="btn btn-outline-primary">Add</button>
-                                        <input type="number" min="1" name="count" value="1">
+                                        <input class="input-buy" type="number" min="1" name="count" value="1">
                                         <input type="hidden" name="product" value="{{$hotel->id}}">
                                         @csrf
                                         <form>

@@ -20,7 +20,7 @@ use App\Http\Controllers\FrontController as F;
 //     return view('welcome');
 // });
 
-Route::get('/', [F::class, 'home'])->name('home')->middleware('roles:A|M|C');
+Route::get('/', [F::class, 'home'])->name('start')->middleware('roles:A|M|C');
 Route::get('/hotel/{hotel}', [F::class, 'showHotel'])->name('show-hotel')->middleware('roles:A|M|C');
 Route::post('/add-to-cart', [F::class, 'addToCart'])->name('add-to-cart')->middleware('roles:A|M|C');
 

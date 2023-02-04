@@ -13,7 +13,7 @@
              <div class="row justify-content-center">
 
 
-                 <div class="col-3">
+                 <div class="col-12">
 
                      <div class="list-table">
                          <div class="card" style="margin-bottom: 5px">
@@ -32,6 +32,21 @@
                                  <p style="font-weight: bold"> Price: {{$hotel->price}} eur</p>
 
                              </div>
+                             <div class="col-9">
+                                 <div class="mb-3">
+                                     <label class="form-label">Hotel description</label>
+                                     <div>{{$hotel->desc}}</div>
+
+                                 </div>
+                             </div>
+                             @if($hotel->photo)
+                             <div class="col-4">
+                                 <div class="mb-3 img">
+                                     <img src="{{asset($hotel->photo)}}">
+                                 </div>
+                             </div>
+                             @endif
+
                              <div class="buy">
                                  <div class="price"> {{$hotel->price}}Eur</div>
                                  <form action="{{route('add-to-cart')}}" method="post">

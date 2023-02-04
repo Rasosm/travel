@@ -16,7 +16,7 @@ class HotelController extends Controller
      */
     public function index()
     {
-        $hotels = Hotel::all()->sortBy('title');
+        $hotels = Hotel::all();
         return view('back.hotels.index', [
             'hotels' => $hotels
 
@@ -32,7 +32,7 @@ class HotelController extends Controller
      */
     public function create()
     {
-        $countries = Country::all()->sortBy('title');
+        $countries = Country::all();
         return view('back.hotels.create', [
             'countries' => $countries
         ]);
@@ -97,7 +97,7 @@ class HotelController extends Controller
      */
     public function edit(Hotel $hotel)
     {
-        $countries = Country::all()->sortBy('title');
+        $countries = Country::all();
         return view('back.hotels.edit',[
             'hotel' => $hotel,
             'countries' => $countries

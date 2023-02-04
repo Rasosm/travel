@@ -94,12 +94,13 @@
 
 
             @forelse($hotels as $hotel)
-            <div class="card" style="margin-bottom: 5px">
-                <div class="card-header" style="display: inherit">
-                    <p class="card-title" style="font-size: 18px; font-weight: bold; line-height: 1.4">{{$hotel->title}}</p>
-                    <p class="card-title" style="margin-left: 7px;">{{$hotel->hotelCountry->title}}</p>
+            <div class="card card-list">
+                <div class="card-header card-header-list">
+                    <p class="card-title card-title-bold">{{$hotel->title}}</p>
+
+                    <p class="card-title">{{$hotel->hotelCountry->title}}</p>
                 </div>
-                <div class="card-body">
+                <div class="card-body card-body-list">
                     <p class="card-text">{{$hotel->duration}} nights</p>
                     <p style="font-weight: bold"> Price: {{$hotel->price}} eur</p>
                     <div class="smallimg">
@@ -110,17 +111,20 @@
 
                         @endif
                     </div>
-                    <div>
+                    <div class="buttons">
+                        <button type="submit" class="btn btn-outline-info mt-4"><a style="text-decoration: none" href="{{route('hotels-show', $hotel)}}">Show</a></button>
+
+
+                        <button type="submit" class="btn btn-outline-info mt-4"><a style="text-decoration: none" href="{{route('hotels-edit', $hotel)}}">Edit</a></button>
+
                         <form action="{{route('hotels-delete', $hotel)}}" method="post">
-                            <button style="float: right; color: red;" type="submit" class="btn btn-outline-info mt-4">Delete</button>
+                            <button type="submit" class="btn btn-outline-info mt-4 btn-delete">Delete</button>
                             @csrf
                             @method('delete')
                         </form>
-                        <button style="float: right; margin-right: 7px;" type="submit" class="btn btn-outline-info mt-4"><a style="text-decoration: none" href="{{route('hotels-show', $hotel)}}">Show</a></button>
-
-                        <button style="float: right; margin-right: 7px;" type="submit" class="btn btn-outline-info mt-4"><a style="text-decoration: none" href="{{route('hotels-edit', $hotel)}}">Edit</a></button>
-
                     </div>
+
+
                 </div>
             </div>
 

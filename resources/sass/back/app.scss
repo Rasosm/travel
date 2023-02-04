@@ -7,6 +7,40 @@
 // Bootstrap
 @import 'bootstrap/scss/bootstrap';
 
+.logo {
+    width: 150px;
+    height: auto;
+}
+.card-list{
+   margin-bottom: 5px;
+ 
+.card-header-list{
+    display: inherit
+}
+.card-body-list{
+    
+        display: flex;
+        justify-content: space-between;
+        gap: 20px;
+        align-items: center;
+        
+}
+.card-title-bold{
+    font-size: 18px;
+        font-weight: bold;
+        line-height: 1.4;
+        margin-right: 7px;
+}
+.btn-delete{
+    color:red;
+
+}
+}
+.buttons {
+    display: flex;
+    gap: 10px;
+    margin: 0;
+}
 .smallimg {
     width: 10%;
 
