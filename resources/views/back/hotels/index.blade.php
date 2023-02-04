@@ -116,6 +116,7 @@
                             @csrf
                             @method('delete')
                         </form>
+                        <button style="float: right; margin-right: 7px;" type="submit" class="btn btn-outline-info mt-4"><a style="text-decoration: none" href="{{route('hotels-show', $hotel)}}">Show</a></button>
 
                         <button style="float: right; margin-right: 7px;" type="submit" class="btn btn-outline-info mt-4"><a style="text-decoration: none" href="{{route('hotels-edit', $hotel)}}">Edit</a></button>
 

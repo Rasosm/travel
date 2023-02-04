@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Hotel;
 use App\Models\Country;
 use Illuminate\Http\Request;
+use Barryvdh\DomPDF\Facade\Pdf;
 
 class HotelController extends Controller
 {
@@ -83,7 +84,9 @@ class HotelController extends Controller
      */
     public function show(Hotel $hotel)
     {
-        //
+        return view('back.hotels.show',[
+            'hotel' => $hotel
+        ]);
     }
 
     /**
@@ -153,5 +156,11 @@ class HotelController extends Controller
     {
         $hotel->delete();
         return redirect()->back()->with('ok', 'Drink was deleted');
+    }
+
+    public function pdf(Hotel $hotel)
+    {
+        $pdf = Pdf::loadView('back.hotels.pdf', ['hotel' => $hotel]);
+        return $pdf->download($hotel->title.'.pdf');
     }
 }

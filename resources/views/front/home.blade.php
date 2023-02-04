@@ -30,19 +30,17 @@
             </div>
         </form>
 
-
-
         <div>
 
             <div class="container">
                 <div class="row justify-content-center">
 
                     @forelse($hotels as $hotel)
-                    <div class="col-3">
+                    <div class="col-3 one-card">
 
 
                         <div class="list-table">
-                            <div class="card" style="margin-bottom: 5px">
+                            <div class="">
                                 <a href="{{route('show-hotel', $hotel)}}">
 
                                     <div class="smallimg">
@@ -55,9 +53,9 @@
                                 </a>
 
 
-                                <div class="card-header" style="display: inherit">
+                                <div class="card-header">
                                     <p class="card-title" style="font-size: 18px; font-weight: bold; line-height: 1.4">{{$hotel->title}}</p>
-                                    <p class="card-title" style="margin-left: 7px;">{{$hotel->hotelCountry->title}}</p>
+                                    <p class="card-title">{{$hotel->hotelCountry->title}}</p>
                                 </div>
                                 <div class="card-body">
                                     <p class="card-text">{{$hotel->duration}} nights</p>
@@ -65,7 +63,7 @@
 
                                 </div>
                                 <div class="buy">
-                                    <div class="price"> {{$hotel->price}}Eur</div>
+
                                     <form action="{{route('add-to-cart')}}" method="post">
                                         <button type="submit" class="btn btn-outline-primary">Add</button>
                                         <input type="number" min="1" name="count" value="1">
@@ -87,14 +85,7 @@
             </div>
         </div>
 
-
-
-
-
-
-        <div class="m-2">{{ $hotels->links() }}</div>
-
-
+        <div class="m-2">{{$hotels->links()}}</div>
 
     </div>
 </div>

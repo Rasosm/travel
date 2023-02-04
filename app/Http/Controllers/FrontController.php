@@ -9,7 +9,7 @@ class FrontController extends Controller
 {
    public function home()
     {
-        $hotels = Hotel::paginate(6);
+        $hotels = Hotel::paginate(8);
 
         return view('front.home', [
             'hotels' => $hotels
