@@ -9,9 +9,10 @@
         <div class="col-7" style="margin-top: 0">
             <div class="card m-4">
                 <div class="card-header create">
-                    Create new hotel
+                    <h3>Create new hotel</h3>
+
                 </div>
-                <div class="card-body">
+                <div class=" card-body">
                     <form action="{{route('hotels-store')}}" method="post" enctype="multipart/form-data">
 
 
@@ -55,7 +56,8 @@
 
 
                         <div class="mb-3" style="justify-content: center; display: flex">
-                            <button type="submit" class="btn btn-outline-info mt-4">Save</button>
+                            <button type="submit" class="btn btn-outline-warning mt-4">Save</button>
+
                         </div>
                         @csrf
 

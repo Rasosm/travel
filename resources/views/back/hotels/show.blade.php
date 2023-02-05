@@ -9,15 +9,17 @@
         <div class="col-7" style="margin-top: 0">
             <div class="card m-4">
                 <div class="card-header create">
-                    About hotel
+                    <h3>About hotel</h3>
+
                 </div>
                 <div class="card-body">
+
                     <div class="mb-3">
-                        <label class="form-label">Country</label>
+                        <label class="form-label">Country:</label>
                         {{$hotel->hotelCountry?->title}}
                     </div>
                     <div class="mb-3">
-                        <label class="form-label">Hotel</label>
+                        <label class="form-label">Hotel:</label>
                         {{$hotel->title}}
                     </div>
                     <div class="mb-3">

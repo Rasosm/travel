@@ -37,8 +37,28 @@
         height: 300px;
         border-radius: 30px;
     }
+    .img-hotel{
+        margin: 15px;
+    }
+}
+
+.one-hotel{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.card-header-hotel{
+    margin: 0;
+    text-align: center;
+}
+.card-title-hotel{
+    text-align: center;
+}
+h3 {
+    color: #198753;
+    text-align: center;
 }
 .page-link.active,
 .active>.page-link{
-    background-color: rgb(250, 202, 8);
+    background-color: rgb(238, 192, 9);
 }

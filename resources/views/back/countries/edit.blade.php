@@ -9,7 +9,8 @@
         <div class="col-7" style="margin-top: 0">
             <div class="card m-4">
                 <div class="card-header create">
-                    Edit Country
+                    <h3>Edit Country</h3>
+
                 </div>
                 <div class="card-body">
                     <form action="{{route('countries-update', $country)}}" method="post">
@@ -27,7 +28,8 @@
                         </div>
 
                         <div class="mb-3" style="justify-content: center; display: flex">
-                            <button type="submit" class="btn btn-outline-info mt-4">Save</button>
+                            <button type="submit" class="btn btn-outline-warning mt-4">Save</button>
+
                         </div>
                         @csrf
                         @method('put')

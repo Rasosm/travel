@@ -112,13 +112,12 @@
                         @endif
                     </div>
                     <div class="buttons">
-                        <button type="submit" class="btn btn-outline-info mt-4"><a style="text-decoration: none" href="{{route('hotels-show', $hotel)}}">Show</a></button>
+                        <a class="btn btn-outline-warning mt-4" href="{{route('hotels-show', $hotel)}}">Show</a>
 
-
-                        <button type="submit" class="btn btn-outline-info mt-4"><a style="text-decoration: none" href="{{route('hotels-edit', $hotel)}}">Edit</a></button>
-
+                        <a class="btn btn-outline-success mt-4" href="{{route('hotels-edit', $hotel)}}">Edit</a>
                         <form action="{{route('hotels-delete', $hotel)}}" method="post">
-                            <button type="submit" class="btn btn-outline-info mt-4 btn-delete">Delete</button>
+                            <button type="submit" class="btn btn-outline-danger mt-4 btn-delete">Delete</button>
+
                             @csrf
                             @method('delete')
                         </form>

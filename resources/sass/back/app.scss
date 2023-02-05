@@ -1,5 +1,6 @@
 // Fonts
-@import url('https://fonts.bunny.net/css?family=Nunito');
+// @import url('https://fonts.bunny.net/css?family=Nunito');
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@200;400;500;600;700&family=Roboto:wght@300;400;500&display=swap');
 
 // Variables
 @import 'variables';
@@ -11,11 +12,15 @@
     width: 150px;
     height: auto;
 }
+
 .card-list{
    margin-bottom: 5px;
  
 .card-header-list{
     display: inherit
+}
+.create{
+    font-size: 18px;
 }
 .card-body-list{
     
@@ -31,10 +36,13 @@
         line-height: 1.4;
         margin-right: 7px;
 }
-.btn-delete{
-    color:red;
-
+.flex{
+    display: flex;
+    justify-content: space-between;
+    gap: 20px;
+    align-items: center;
 }
+
 }
 .buttons {
     display: flex;
@@ -56,7 +64,12 @@
         display: block;
         height: 200px;
         width: auto;
+        border-radius: 30px
     }
+}
+h3{
+    color: #198753;
+    text-align: center;
 }
 
 // .card-body{

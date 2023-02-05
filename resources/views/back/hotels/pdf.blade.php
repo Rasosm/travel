@@ -7,6 +7,22 @@
     <title>Document</title>
 </head>
 <body>
+    <style>
+        .mb-3 {
+            margin: 20px;
+        }
+
+        .form-label {
+            font-weight: bold;
+        }
+
+        .img img {
+            height: 400px;
+            width: auto;
+        }
+
+    </style>
+
 
     <div class="card-header create">
         About hotel
