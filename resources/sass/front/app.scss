@@ -11,6 +11,11 @@
     width: 150px;
     height: auto;
 }
+.nav-link{
+    font-size: 18px;
+    font-weight: bold;
+    color:#198753;
+}
 .one-card{
     margin-bottom: 20px;
     border-radius: 30px;
@@ -61,4 +66,5 @@ h3 {
 .page-link.active,
 .active>.page-link{
     background-color: rgb(238, 192, 9);
+    
 }

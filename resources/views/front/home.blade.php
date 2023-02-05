@@ -9,25 +9,79 @@
 <div class="container">
     <div class="row justify-content-center">
 
-        <form action="{{route('hotels-index')}}" method="get">
+        <form action="{{route('start')}}" method="get">
             <div class="container">
                 <div class="row justify-content-start">
-                    <div class="col-3">
+                    <div class="col-2">
                         <div class="mb-3">
                             <label class="form-label">Paieška</label>
-                            {{-- <input type="text" class="form-control" name="s" value="{{$s}}"> --}}
-                            <input type="text" class="form-control" name="s" value="">
-
-
+                            <input type="text" class="form-control" name="s" value="{{$s}}">
                         </div>
                     </div>
                     <div class=" col-4">
                         <div class="head-buttons">
-                            <button type="submit" class="btn btn-outline-primary mt-3">Ieškoti</button>
+                            <button type="submit" class="btn btn-outline-success" style="margin-top: 30px">Ieškoti</button>
+
                         </div>
                     </div>
                 </div>
             </div>
+        </form>
+        <form action="{{route('start')}}" method="get">
+            <div class="container">
+                <div class="row justify-content-end">
+                    <div class="col-2">
+                        <div class="mb-3">
+                            <label class="form-label">Sort</label>
+                            <select class="form-select" name="sort">
+                                <option>default</option>
+                                @foreach($sortSelect as $value => $name)
+                                <option value="{{$value}}" @if($sortShow==$value) selected @endif>{{$name}}</option>
+                                @endforeach
+                            </select>
+                        </div>
+                    </div>
+
+                    <div class="col-1">
+                        <div class="mb-3">
+                            <label class="form-label">Show</label>
+                            <select class="form-select" name="per_page">
+                                @foreach($perPageSelect as $value)
+                                <option value="{{$value}}" @if($perPageShow==$value) selected @endif>{{$value}}</option>
+
+                                @endforeach
+                            </select>
+                        </div>
+                    </div>
+                    <div class="col-2">
+                        <div class="mb-3">
+                            <label class="form-label">Select Country</label>
+                            <select class="form-select" name="country_id">
+                                <option value="all">All</option>
+                                @foreach($countries as $country)
+                                <option value="{{$country->id}}" @if($country->id == $countryShow) selected @endif>{{$country->title}}</option>
+                                @endforeach
+                            </select>
+                        </div>
+                    </div>
+
+
+                    <div class="col-2 ">
+                        <div class=" head-buttons">
+                            <button type="submit" class="btn btn-outline-success" style="margin-right: 5px; margin-top: 30px">Submit</button>
+
+                            <a href="{{route('start')}}" class="btn btn-outline-success" style="margin-top: 30px">Update</a>
+
+
+
+
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+
+
         </form>
 
         <div>
@@ -84,8 +138,10 @@
                 </div>
             </div>
         </div>
-
-        <div class="m-2">{{$hotels->links()}}</div>
+        @if($perPageShow != 'all')
+        <div class="m-2">{{$hotels->links()}}
+        </div>
+        @endif
 
     </div>
 </div>

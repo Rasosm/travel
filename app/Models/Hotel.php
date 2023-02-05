@@ -8,6 +8,15 @@ use Illuminate\Database\Eloquent\Model;
 class Hotel extends Model
 {
     use HasFactory;
+    const SORT = [
+        'asc_title' => 'Title A-Z',
+        'desc_title' => 'Title Z-A',
+        'asc_price' => 'Price 0-9',
+        'desc_price' => 'Price 9-0',
+    ];
+    const PER_PAGE = [
+        'all', 8, 16, 32
+    ];
 
     public function hotelCountry()
     {
