@@ -1,3 +1,4 @@
+@inject('cart', 'App\Services\CartService')
 <!doctype html>
 <html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
 <head>
@@ -75,6 +76,30 @@
                         </li>
                         @endif
                         @else
+
+                        <li class="nav-item dropdown">
+                            <a id="cartDropdown" class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
+                                <div class="cart-svg">
+                                    <svg class="cart">
+                                        <use xlink:href="#cart"></use>
+                                    </svg>
+                                    <span class="count">{{$cart->count}}</span>
+                                    <span>{{$cart->total}} eur </span>
+                                </div>
+                            </a>
+                            <a href="{{route('cart')}}" class="dropdown-menu dropdown-menu-end" aria-labelledby="cartDropdown">
+                                @forelse($cart->list as $product)
+                                <div class="dropdown-item">
+                                    {{$product->title}}
+                                    <b>X</b> {{$product->count}} bt.
+                                    {{$product->sum}} eur
+                                </div>
+                                @empty
+                                <span class="dropdown-item">Empty</span>
+                                @endforelse
+                            </a>
+                        </li>
+
                         <li class="nav-item dropdown">
                             <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
                                 {{ Auth::user()->name }}
@@ -91,6 +116,8 @@
                                 </form>
                             </div>
                         </li>
+
+
                         @endguest
                     </ul>
                 </div>
@@ -101,5 +128,7 @@
             @yield('content')
         </main>
     </div>
+    @include('layouts.svg')
+
 </body>
 </html>

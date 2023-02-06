@@ -106,7 +106,6 @@
                                     </div>
                                 </a>
 
-
                                 <div class="card-header">
                                     <p class="card-title" style="font-size: 18px; font-weight: bold; line-height: 1.4">{{$hotel->title}}***</p>
                                     <p class="card-title">{{$hotel->hotelCountry->title}}</p>
@@ -123,7 +122,7 @@
                                         <input class="input-buy" type="number" min="1" name="count" value="1">
                                         <input type="hidden" name="product" value="{{$hotel->id}}">
                                         @csrf
-                                        <form>
+                                    </form>
                                 </div>
 
 

@@ -23,6 +23,9 @@ use App\Http\Controllers\FrontController as F;
 Route::get('/', [F::class, 'home'])->name('start')->middleware('roles:A|M|C');
 Route::get('/hotel/{hotel}', [F::class, 'showHotel'])->name('show-hotel')->middleware('roles:A|M|C');
 Route::post('/add-to-cart', [F::class, 'addToCart'])->name('add-to-cart')->middleware('roles:A|M|C');
+Route::get('/cart', [F::class, 'cart'])->name('cart');
+Route::post('/cart', [F::class, 'updateCart'])->name('update-cart');
+
 
 Route::prefix('admin/countries')->name('countries-')->group(function () {
     Route::get('/', [C::class, 'index'])->name('index')->middleware('roles:A|M');

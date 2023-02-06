@@ -16,6 +16,44 @@
     font-weight: bold;
     color:#198753;
 }
+
+.nav-item.dropdown #cartDropdown {
+    &::after {
+        display: none;
+    }
+
+    a {
+        text-decoration: none;
+    }
+
+    .cart-svg {
+        position: relative;
+        text-decoration: none;
+
+        span {
+            font-size: 20px;
+            text-decoration: none;
+
+            &.count {
+                width: 30px;
+                text-align: center;
+                position: absolute;
+                top: 0;
+                left: 8px;
+                text-decoration: none;
+            }
+        }
+
+        svg.cart {
+            width: 40px;
+            height: 40px;
+            fill: #198753;
+            margin-right: 10px;
+            color: fff;
+        }
+    }
+}
+
 .one-card{
     margin-bottom: 20px;
     border-radius: 30px;
