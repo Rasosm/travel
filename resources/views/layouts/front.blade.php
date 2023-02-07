@@ -91,7 +91,7 @@
                                 @forelse($cart->list as $product)
                                 <div class="dropdown-item">
                                     {{$product->title}}
-                                    <b>X</b> {{$product->count}} bt.
+                                    <b>X</b> {{$product->count}}
                                     {{$product->sum}} eur
                                 </div>
                                 @empty

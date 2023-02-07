@@ -25,6 +25,7 @@ Route::get('/hotel/{hotel}', [F::class, 'showHotel'])->name('show-hotel')->middl
 Route::post('/add-to-cart', [F::class, 'addToCart'])->name('add-to-cart')->middleware('roles:A|M|C');
 Route::get('/cart', [F::class, 'cart'])->name('cart');
 Route::post('/cart', [F::class, 'updateCart'])->name('update-cart');
+Route::post('/make-order', [F::class, 'makeOrder'])->name('make-order');
 
 
 Route::prefix('admin/countries')->name('countries-')->group(function () {

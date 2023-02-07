@@ -54,6 +54,40 @@ class CartService
         session()->put('cart', $cart);
     }
 
+    public function delete(int $id)
+    {
+        unset($this->cart[$id]);
+        session()->put('cart', $this->cart);
+    }
+
+    public function order()
+    {
+        $order = (object)[];
+        $order->total = $this->total;
+        $order->hotel = [];
+
+        foreach ($this->cartList as $hotel) {
+            $order->hotel[] = (object)[
+                'title' => $hotel->title,
+                'count' => $hotel->count,
+                'price' => $hotel->price,
+                'id' => $hotel->id
+            ];
+        }
+
+        return $order;
+    }
+
+    public function empty()
+    {
+        session()->put('cart', []);
+        $this->total = 0;
+        $this->count = 0;
+        $this->cartList = collect();
+        $this->cart = [];
+    }
+
+
     public function test()
     {
         return 'Hello this is Cart Service';
