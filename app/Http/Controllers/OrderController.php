@@ -3,8 +3,10 @@
 namespace App\Http\Controllers;
 
 use App\Models\Order;
-use App\Http\Requests\StoreOrderRequest;
-use App\Http\Requests\UpdateOrderRequest;
+use App\Models\User;
+use Illuminate\Http\Request;
+use App\Mail\OrderShipped;
+use Illuminate\Support\Facades\Mail;
 
 class OrderController extends Controller
 {
@@ -15,62 +17,31 @@ class OrderController extends Controller
      */
     public function index()
     {
-        //
-    }
-
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function create()
-    {
-        //
-    }
-
-    /**
-     * Store a newly created resource in storage.
-     *
-     * @param  \App\Http\Requests\StoreOrderRequest  $request
-     * @return \Illuminate\Http\Response
-     */
-    public function store(StoreOrderRequest $request)
-    {
-        //
-    }
-
-    /**
-     * Display the specified resource.
-     *
-     * @param  \App\Models\Order  $order
-     * @return \Illuminate\Http\Response
-     */
-    public function show(Order $order)
-    {
-        //
-    }
-
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  \App\Models\Order  $order
-     * @return \Illuminate\Http\Response
-     */
-    public function edit(Order $order)
-    {
-        //
+        $orders = Order::orderBy('created_at', 'desc')
+        ->get()
+        ->map(function($hotel) {
+            $hotel->hotels = json_decode($hotel->order_json);
+            return $hotel;
+        });
+        return view('back.orders.index', ['orders' => $orders]);
     }
 
     /**
      * Update the specified resource in storage.
      *
-     * @param  \App\Http\Requests\UpdateOrderRequest  $request
+     * @param  \Illuminate\Http\Request  $request
      * @param  \App\Models\Order  $order
      * @return \Illuminate\Http\Response
      */
-    public function update(UpdateOrderRequest $request, Order $order)
+    public function update(Request $request, Order $order)
     {
-        //
+        $order->status = 1;
+        $order->save();
+        // $to = User::where('id', 'user_id')->get()[];
+        // $to = User::where('id', 'user_id')->first();
+        $to = User::find($order->user_id);
+        Mail::to($to)->send(new OrderShipped($order));
+        return redirect()->back();
     }
 
     /**
@@ -81,6 +52,10 @@ class OrderController extends Controller
      */
     public function destroy(Order $order)
     {
-        //
+        if ($order->status == 0) {
+            return redirect()->back()->with('not', 'You can not delete unfinished orders');
+        }
+        $order->delete();
+        return redirect()->back();
     }
 }

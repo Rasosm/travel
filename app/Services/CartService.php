@@ -64,10 +64,10 @@ class CartService
     {
         $order = (object)[];
         $order->total = $this->total;
-        $order->hotel = [];
+        $order->hotels = [];
 
         foreach ($this->cartList as $hotel) {
-            $order->hotel[] = (object)[
+            $order->hotels[] = (object)[
                 'title' => $hotel->title,
                 'count' => $hotel->count,
                 'price' => $hotel->price,
