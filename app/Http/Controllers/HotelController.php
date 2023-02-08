@@ -6,6 +6,7 @@ use App\Models\Hotel;
 use App\Models\Country;
 use Illuminate\Http\Request;
 use Barryvdh\DomPDF\Facade\Pdf;
+use Carbon\Carbon;
 
 class HotelController extends Controller
 {
@@ -17,6 +18,14 @@ class HotelController extends Controller
     public function index()
     {
         $hotels = Hotel::all();
+
+        $hotels = $hotels->map(function($t) {
+            $t->startNice = Carbon::parse($t->start)->format('Y.m.d');
+            $t->endNice = Carbon::parse($t->end)->format('Y.m.d');
+            // $t->startFront = Carbon::parse($t->start)->format(''F j, Y'');
+            // $t->endFront = Carbon::parse($t->end)->format(''F j, Y'');
+            return $t;
+        });
         return view('back.hotels.index', [
             'hotels' => $hotels
 
@@ -65,12 +74,21 @@ class HotelController extends Controller
             $hotel->photo = '/hotels/' . $file;
         }
 
+        $start = Carbon::parse($request->hotel_start);
+        $end = Carbon::parse($request->hotel_start)->addDays($request->hotel_duration);
 
         $hotel->country_id = $request->country_id;
         $hotel->title = $request->hotel_title;
+        $hotel->start = $start;
+        $hotel->end = $end;
         $hotel->duration = $request->hotel_duration;
         $hotel->price = $request->hotel_price;
         $hotel->desc = $request->hotel_desc;
+
+        // Hotel::insert([
+        //     'start' => $start,
+        //     'end' => $end,
+        // ]);
 
         $hotel->save();
         return redirect()->route('hotels-index');
@@ -138,6 +156,8 @@ class HotelController extends Controller
 
         $hotel->country_id = $request->country_id;
         $hotel->title = $request->hotel_title;
+        $hotel->start = $request->start;
+        $hotel->end = $request->end;
         $hotel->duration = $request->hotel_duration;
         $hotel->price = $request->hotel_price;
         $hotel->desc = $request->hotel_desc;

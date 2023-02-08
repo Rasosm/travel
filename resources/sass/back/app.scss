@@ -17,7 +17,7 @@
    margin-bottom: 5px;
  
 .card-header-list{
-    display: inherit
+    display: flex;
 }
 .create{
     font-size: 18px;
@@ -28,13 +28,23 @@
         justify-content: space-between;
         gap: 20px;
         align-items: center;
+        p {
+                margin-bottom: 0;
+            }
         
 }
+.card-title{
+font-size: 18px;
+line-height: 1.4;
+margin: 0;
+    
+
+}
 .card-title-bold{
-    font-size: 18px;
-        font-weight: bold;
-        line-height: 1.4;
-        margin-right: 7px;
+    
+    font-weight: bold;
+    margin-right: 7px;
+    
 }
 .flex{
     display: flex;

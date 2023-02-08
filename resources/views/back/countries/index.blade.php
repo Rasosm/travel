@@ -10,7 +10,7 @@
                 <div class="card-header">
                     <h3>All Countries</h3>
                 </div>
-                <div class="card-body">
+                <div class="card-body flex">
                     <ul class="list-group">
                         @forelse($countries as $country)
                         <li class="list-group-item">
@@ -19,7 +19,6 @@
 
                                 <h5>{{$country->title}}</h5>
                                 <p>{{$country->season_start}} - {{$country->season_end}}</p>
-
 
                                 <div class="buttons">
                                     <a href="{{route('countries-edit', $country)}}" class="btn btn-outline-success">Edit</a>

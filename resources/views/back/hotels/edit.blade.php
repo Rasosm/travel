@@ -31,6 +31,16 @@
                             <input type="text" name="hotel_title" class="form-control" value="{{$hotel->title}}">
                         </div>
                         <div class="mb-3">
+                            <label class="form-label">Check In</label>
+                            <input type="date" name="start" class="form-control" placeholder="season start" value="{{$hotel->start}}">
+
+                        </div>
+                        <div class="mb-3">
+                            <label class="form-label">Check Out</label>
+                            <input type="date" name="end" class="form-control" placeholder="season end" value="{{$hotel->end}}">
+                        </div>
+
+                        <div class="mb-3">
                             <label class="form-label">Duration</label>
                             <input type="text" name="hotel_duration" class="form-control" value="{{$hotel->duration}}">
 

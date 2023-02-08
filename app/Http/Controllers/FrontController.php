@@ -9,6 +9,7 @@ use App\Services\CartService;
 use App\Models\Order;
 use Illuminate\Support\Facades\Auth;
 
+
 class FrontController extends Controller
 {
    public function home(Request $request)

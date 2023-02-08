@@ -17,6 +17,8 @@ return new class extends Migration
             $table->id();
             $table->string('title', 100);
             $table->decimal('price', 9, 2)->unsigned();
+            $table->date('start');
+            $table->date('end');
             $table->mediumInteger('duration')->unsigned();
             $table->string('photo', 200)->nullable();
             $table->unsignedBigInteger('country_id');

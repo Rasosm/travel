@@ -47,11 +47,17 @@ class DatabaseSeeder extends Seeder
         }
 
          foreach(range(1, 21) as $i) {
-             $price = rand(359, 5970);
-                $duration = rand(1,14);
+            $price = rand(359, 5970);
+            $duration = rand(1,14);
+            $month = rand(1,5);
+            $day = rand(1, 28);
+            $monthEnd = rand(6,12);
+            $dayEnd = rand(1, 28);
             DB::table('hotels')->insert([
                                'title' => $faker->city,
                 'price' => $price,
+                'start' => '2023-'.$month.'-'.$day,
+                'end' => '2023-'.$monthEnd.'-'.$dayEnd,
                 'duration' => $duration,
                 'country_id' => $i,
                 'desc' => $faker->realText(500, 5)

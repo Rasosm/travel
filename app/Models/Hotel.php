@@ -18,6 +18,11 @@ class Hotel extends Model
         'all', 8, 16, 32
     ];
 
+    // protected $casts = [
+    //     'start' => 'date',
+    //     'end' => 'date',
+    // ];
+
     public function hotelCountry()
     {
         return $this->belongsTo(Country::class, 'country_id', 'id');
