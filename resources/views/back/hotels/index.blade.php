@@ -118,12 +118,15 @@
                         <a class="btn btn-outline-warning" href="{{route('hotels-show', $hotel)}}">Show</a>
 
                         <a class="btn btn-outline-success" href="{{route('hotels-edit', $hotel)}}">Edit</a>
+                        @if(Auth::user()?->role == 'admin')
+
                         <form action="{{route('hotels-delete', $hotel)}}" method="post">
                             <button type="submit" class="btn btn-outline-danger btn-delete">Delete</button>
 
                             @csrf
                             @method('delete')
                         </form>
+                        @endif
                     </div>
 
 

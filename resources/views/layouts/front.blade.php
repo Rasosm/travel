@@ -21,9 +21,9 @@
     <div id="app">
         <nav class="navbar navbar-expand-md navbar-light bg-white shadow-sm">
             <div class="container">
-                <a href"{{route('home')}}">
-                    <img class="logo" src="{{asset('img/travelLogo.png')}}" alt="logo">
-                </a>
+                {{-- <a href"{{route('home')}}">
+                <img class="logo" src="{{asset('img/travelLogo.png')}}" alt="logo">
+                </a> --}}
 
                 <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="{{ __('Toggle navigation') }}">
                     <span class="navbar-toggler-icon"></span>
@@ -91,7 +91,8 @@
                                 @forelse($cart->list as $product)
                                 <div class="dropdown-item">
                                     {{$product->title}}
-                                    <b>X</b> {{$product->count}}
+                                    <b>({{$product->count}}) - </b>
+
                                     {{$product->sum}} eur
                                 </div>
                                 @empty
@@ -101,7 +102,9 @@
                         </li>
 
                         <li class="nav-item dropdown">
-                            <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
+                            <a style="color: rgb(238, 192, 9)" id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
+
+
                                 {{ Auth::user()->name }}
                             </a>
 

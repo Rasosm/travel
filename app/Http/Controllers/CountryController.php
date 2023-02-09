@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Country;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Session;
 
 class CountryController extends Controller
 {
@@ -47,7 +48,7 @@ class CountryController extends Controller
         
         $country->save();
 
-        return redirect()->route('countries-index')->with('ok', 'Sveikinu, sėkmingai sukūrėte naują sąskaitą');
+        return redirect()->route('countries-index', ['#'.$country->id])->with('ok', 'Sveikinu, sėkmingai sukūrėte naują sąskaitą');
     }
 
     /**

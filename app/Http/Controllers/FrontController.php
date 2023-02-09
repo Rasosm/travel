@@ -23,7 +23,7 @@ class FrontController extends Controller
                 $hotels = Hotel::where('id', '>', 0);
             }
                 
-            
+          
             
             $hotels = match($request->sort ?? '') {
                     'asc_title' => $hotels->orderBy('title'),
@@ -33,9 +33,6 @@ class FrontController extends Controller
                     default => $hotels
             };
 
-
-    
-            
             if( $perPageShow == 'all'){
                     $hotels = $hotels->get();
                 }else{
@@ -46,12 +43,12 @@ class FrontController extends Controller
             $s = explode(' ', $request->s);
 
             if ( count($s) == 1) {
-                $hotels = Hotel::where('title', 'like', '%'.$request->s.'%')->get();
+                $hotels = Hotel::where('title', 'like', '%'.$request->s.'%')->paginate($perPageShow)->withQueryString();
             }
             else {
                 $hotels = Hotel::where('title', 'like', '%'.$s[0].'%'.$s[1].'%')
                 ->orWhere('title', 'like', '%'.$s[1].'%'.$s[0].'%')
-                ->get();
+                ->paginate($perPageShow)->withQueryString();
             }
         }
 

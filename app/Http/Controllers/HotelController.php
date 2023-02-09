@@ -20,10 +20,10 @@ class HotelController extends Controller
         $hotels = Hotel::all();
 
         $hotels = $hotels->map(function($t) {
-            $t->startNice = Carbon::parse($t->start)->format('Y.m.d');
-            $t->endNice = Carbon::parse($t->end)->format('Y.m.d');
-            // $t->startFront = Carbon::parse($t->start)->format(''F j, Y'');
-            // $t->endFront = Carbon::parse($t->end)->format(''F j, Y'');
+            // $t->startNice = Carbon::parse($t->start)->format('Y.m.d');
+            // $t->endNice = Carbon::parse($t->end)->format('Y.m.d');
+            $t->startNice = Carbon::parse($t->start)->format('F j, Y');
+            $t->endNice = Carbon::parse($t->end)->format('F j, Y');
             return $t;
         });
         return view('back.hotels.index', [

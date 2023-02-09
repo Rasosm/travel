@@ -5,7 +5,7 @@
 
 <div class="container">
     <div class="row justify-content-center">
-        <div class="col-md-10">
+        <div class="col-md-7">
             <div class="card">
                 <div class="card-header">
                     <h3>All Countries</h3>
@@ -15,12 +15,15 @@
                         @forelse($countries as $country)
                         <li class="list-group-item">
 
-                            <div class="list-table flex">
+                            <div id="{{ $country['id'] }}" class="list-table d-flex" style="justify-content: space-between">
 
-                                <h5>{{$country->title}}</h5>
-                                <p>{{$country->season_start}} - {{$country->season_end}}</p>
+                                <div>
+                                    <h5>{{$country->title}}</h5>
+                                    <p>{{$country->season_start}} - {{$country->season_end}}</p>
+                                </div>
+                                @if(Auth::user()?->role == 'admin')
 
-                                <div class="buttons">
+                                <div class="buttons mt-3" style="align-items: baseline">
                                     <a href="{{route('countries-edit', $country)}}" class="btn btn-outline-success">Edit</a>
                                     <form action="{{route('countries-delete', $country)}}" method="post">
                                         <button type="submit" class="btn btn-outline-danger">Delete</button>
@@ -28,6 +31,7 @@
                                         @method('delete')
                                     </form>
                                 </div>
+                                @endif
                             </div>
                         </li>
                         @empty

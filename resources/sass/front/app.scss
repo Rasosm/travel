@@ -16,6 +16,9 @@
     font-weight: bold;
     color:#198753;
 }
+.dropdown-item {
+    text-decoration: none;
+}
 
 .nav-item.dropdown #cartDropdown {
     &::after {
@@ -25,6 +28,9 @@
     a {
         text-decoration: none;
     }
+        .dropdown-item{
+            text-decoration: none;
+        }
 
     .cart-svg {
         position: relative;
@@ -33,6 +39,7 @@
         span {
             font-size: 16px;
             text-decoration: none;
+            
 
             &.count {
                 width: 25px;
@@ -54,7 +61,11 @@
         }
     }
 }
-
+.card-header
+.card-body
+.buy{
+    margin-left: 20px;
+}
 .one-card{
     margin-bottom: 20px;
     border-radius: 30px;
@@ -67,8 +78,26 @@
     margin-top: 10px;
     
 }
+.buy{
+margin-bottom: 10px;
+align-items: center;
+
 .input-buy{
-    width: 60px;
+    
+    margin-right: 5px;
+    
+}
+
+
+}
+.cart{
+    justify-content: space-between;
+}
+.cart-buy{
+    input{
+        width: 60px;
+            border-radius: 5px;
+    }
 }
 
 .smallimg {

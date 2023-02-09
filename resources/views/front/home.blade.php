@@ -112,8 +112,8 @@
                                 </div>
                                 <div class="card-body">
                                     <p class="card-text">{{$hotel->start}} - {{$hotel->end}}</p>
-                                    {{-- <p class="card-text">{{$hotel->startNice}} - {{$hotel->endNice}}</p>
-                                    --}}
+                                    <p class="card-text">{{$hotel->startNice}} - {{$hotel->endNice}}</p>
+
 
                                     <p class="card-text">{{$hotel->duration}} nights</p>
                                     <p style="font-weight: bold"> Price: {{$hotel->price}} eur</p>
@@ -122,9 +122,14 @@
                                 <div class="buy">
 
                                     <form action="{{route('add-to-cart')}}" method="post">
-                                        <button type="submit" class="btn btn-outline-primary">Add</button>
-                                        <input class="input-buy" type="number" min="1" name="count" value="1">
-                                        <input type="hidden" name="product" value="{{$hotel->id}}">
+                                        <div class="d-flex buy-btn">
+                                            <input class="form-control input-buy" type="number" min="1" name="count" value="1">
+
+
+                                            <input type="hidden" name="product" value="{{$hotel->id}}">
+                                            <button type="submit" class="btn btn-outline-primary">Add</button>
+                                        </div>
+
                                         @csrf
                                     </form>
                                 </div>
