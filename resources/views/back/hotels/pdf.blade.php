@@ -24,25 +24,25 @@
     </style>
 
 
-    <div class="card-header create">
+    {{-- <div class="card-header create">
         About hotel
-    </div>
+    </div> --}}
     <div class="card-body">
         <div class="mb-3">
-            <label class="form-label">Country</label>
+            <label class="form-label">Country:</label>
             {{$hotel->hotelCountry?->title}}
         </div>
         <div class="mb-3">
-            <label class="form-label">Hotel</label>
+            <label class="form-label">Hotel:</label>
             {{$hotel->title}}
         </div>
         <div class="mb-3">
-            <label class="form-label">Duration</label>
+            <label class="form-label">Duration - </label>
             {{$hotel->duration}} nights
         </div>
 
         <div class="mb-3">
-            <label class="form-label">Price</label>
+            <label class="form-label">Price - </label>
             {{$hotel->price}} eur
         </div>
 

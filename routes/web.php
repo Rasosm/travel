@@ -47,6 +47,7 @@ Route::prefix('admin/hotels')->name('hotels-')->group(function () {
     Route::get('/edit/{hotel}', [H::class, 'edit'])->name('edit')->middleware('roles:A|M');
     Route::put('/edit/{hotel}', [H::class, 'update'])->name('update')->middleware('roles:A|M');
     Route::delete('/delete/{hotel}', [H::class, 'destroy'])->name('delete')->middleware('roles:A|M');
+    Route::get('/cat/{country}', [H::class, 'showCatHotels'])->name('show-cats-hotels')->middleware('roles:A|M');
 });
 
 Route::prefix('admin/orders')->name('orders-')->group(function () {

@@ -7,6 +7,7 @@ use App\Models\Country;
 use Illuminate\Http\Request;
 use Barryvdh\DomPDF\Facade\Pdf;
 use Carbon\Carbon;
+use App\Services\CartService;
 
 class HotelController extends Controller
 {
@@ -15,9 +16,27 @@ class HotelController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(Request $request)
     {
-        $hotels = Hotel::all();
+       
+        // if($request->s){
+        //     $s = explode(' ', $request->s);
+
+        //     if ( count($s) == 1) {
+        //         $hotels = Hotel::where('title', 'like', '%'.$request->s.'%')->get();
+
+        //     }
+        //     else {
+        //         $hotels = Hotel::where('title', 'like', '%'.$s[0].'%'.$s[1].'%')
+        //         ->orWhere('title', 'like', '%'.$s[1].'%'.$s[0].'%')
+        //         ->get();
+        //     }
+        // }
+        // if(!$request->s){
+            $hotels = Hotel::all();
+  
+        // }
+       
 
         $hotels = $hotels->map(function($t) {
             // $t->startNice = Carbon::parse($t->start)->format('Y.m.d');
@@ -26,12 +45,22 @@ class HotelController extends Controller
             $t->endNice = Carbon::parse($t->end)->format('F j, Y');
             return $t;
         });
+
+
         return view('back.hotels.index', [
-            'hotels' => $hotels
+            'hotels' => $hotels,
+            's' => $request->s ?? ''
 
         ]);
     }
+    public function showCatHotels(Country $country)
+    {
+    $hotels = Hotel::where('country_id', $country->id)->get();
 
+    return view('back.hotels.index', [
+    'hotels' => $hotels
+    ]);
+    }
 
     
     /**
@@ -41,7 +70,7 @@ class HotelController extends Controller
      */
     public function create()
     {
-        $countries = Country::all();
+        $countries = Country::all()->sortBy('title');;
         return view('back.hotels.create', [
             'countries' => $countries
         ]);
@@ -91,7 +120,7 @@ class HotelController extends Controller
         // ]);
 
         $hotel->save();
-        return redirect()->route('hotels-index');
+        return redirect()->route('hotels-index', ['#'.$hotel->id]);
     }
 
     /**
@@ -183,4 +212,6 @@ class HotelController extends Controller
         $pdf = Pdf::loadView('back.hotels.pdf', ['hotel' => $hotel]);
         return $pdf->download($hotel->title.'.pdf');
     }
+
+
 }

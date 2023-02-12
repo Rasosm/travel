@@ -21,9 +21,9 @@
     <div id="app">
         <nav class="navbar navbar-expand-md navbar-light bg-white shadow-sm">
             <div class="container">
-                {{-- <a href"{{route('home')}}">
-                <img class="logo" src="{{asset('img/travelLogo.png')}}" alt="logo">
-                </a> --}}
+                <a href"{{route('home')}}">
+                    <img class="logo" src="{{asset('img/travelLogo.png')}}" alt="logo">
+                </a>
 
                 <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="{{ __('Toggle navigation') }}">
                     <span class="navbar-toggler-icon"></span>
@@ -84,7 +84,7 @@
                                         <use xlink:href="#cart"></use>
                                     </svg>
                                     <span class="count">{{$cart->count}}</span>
-                                    <span>{{$cart->total}} eur </span>
+                                    <span class="nav-total">{{$cart->total}} eur </span>
                                 </div>
                             </a>
                             <a href="{{route('cart')}}" class="dropdown-menu dropdown-menu-end" aria-labelledby="cartDropdown">

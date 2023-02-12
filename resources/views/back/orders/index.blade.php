@@ -3,10 +3,10 @@
 @section('content')
 <div class="container">
     <div class="row justify-content-center">
-        <div class="col-md-12">
+        <div class="col-md-8">
             <div class="card">
                 <div class="card-header">
-                    <h1>All Orders</h1>
+                    <h3>All Orders</h3>
                 </div>
                 <div class="card-body">
                     <ul class="list-group">
@@ -14,20 +14,24 @@
                         <li class="list-group-item">
                             <div class="list-table">
                                 <div class="list-table__content">
-                                    <h3># {{$order->id}}
+                                    <h5># {{$order->id}}
                                         <b class="m-5">{{$order->user->name}}</b>
-                                    </h3>
+                                    </h5>
 
-                                    <i class="m-5">{{$order->hotels->total}} eur</i>
+
                                     <ul class="list-group">
                                         @foreach($order->hotels->hotels as $hotel)
                                         <li class="list-group-item">
-                                            {{$hotel->title}} X {{$hotel->count}}
+                                            Hotel: {{$hotel->title}} - {{$hotel->count}} {{$hotel->price}} eur
+
                                         </li>
                                         @endforeach
                                     </ul>
+                                    <i class="list-group-item order-total">Total price: {{$order->hotels->total}} eur</i>
+
+
                                 </div>
-                                <div>
+                                <div class="order-btn">
                                     @if($order->status == 0)
                                     <form action="{{route('orders-update', $order)}}" method="post" class="mt-2">
                                         <button type="submit" class="btn btn-outline-primary">Finish Order</button>

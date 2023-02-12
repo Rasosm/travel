@@ -14,7 +14,7 @@
 }
 
 .card-list{
-   margin-bottom: 5px;
+   
  
 .card-header-list{
     display: flex;
@@ -37,6 +37,7 @@
 font-size: 18px;
 line-height: 1.4;
 margin: 0;
+margin-left: 20px;
     
 
 }
@@ -81,10 +82,37 @@ h3{
     color: #198753;
     text-align: center;
 }
+.card-cats{
+    text-align: center;
+    
+    
+}
 
-// .card-body{
-//     width: 100%;
-//     display: flex;
-//     justify-content: space-between;
-//     align-items: center;
-// }
+h3 {
+    a{
+        color: #198753;
+        text-decoration: none;
+    }
+            
+    }
+.list-table-carts{
+        a {
+            text-decoration: none;
+            h5 {
+                color: #198753;
+                
+            }
+        }
+
+    }
+        
+
+.order-btn {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+.order-total{
+    font-weight: bold;
+}

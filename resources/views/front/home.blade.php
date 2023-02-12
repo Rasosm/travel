@@ -112,9 +112,6 @@
                                 </div>
                                 <div class="card-body">
                                     <p class="card-text">{{$hotel->start}} - {{$hotel->end}}</p>
-                                    <p class="card-text">{{$hotel->startNice}} - {{$hotel->endNice}}</p>
-
-
                                     <p class="card-text">{{$hotel->duration}} nights</p>
                                     <p style="font-weight: bold"> Price: {{$hotel->price}} eur</p>
 

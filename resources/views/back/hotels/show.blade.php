@@ -56,6 +56,8 @@
 
                 </div>
             </div>
+            <a href="{{route('hotels-index')}}"><button type="submit" class="btn btn-outline-primary">Back</button>
+
         </div>
 
     </div>

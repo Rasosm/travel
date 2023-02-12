@@ -105,6 +105,6 @@ class CountryController extends Controller
             $country->delete();
             return redirect()->route('countries-index');
         }
-        return 'negalima';
+        return 'You can not delete this country, because it has some hotels';
     }
 }
