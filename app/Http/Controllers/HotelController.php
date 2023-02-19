@@ -20,23 +20,23 @@ class HotelController extends Controller
     public function index(Request $request)
     {
        
-        // if($request->s){
-        //     $s = explode(' ', $request->s);
+        if($request->s){
+            $s = explode(' ', $request->s);
 
-        //     if ( count($s) == 1) {
-        //         $hotels = Hotel::where('title', 'like', '%'.$request->s.'%')->get();
+            if ( count($s) == 1) {
+                $hotels = Hotel::where('title', 'like', '%'.$request->s.'%')->get();
 
-        //     }
-        //     else {
-        //         $hotels = Hotel::where('title', 'like', '%'.$s[0].'%'.$s[1].'%')
-        //         ->orWhere('title', 'like', '%'.$s[1].'%'.$s[0].'%')
-        //         ->get();
-        //     }
-        // }
-        // if(!$request->s){
+            }
+            else {
+                $hotels = Hotel::where('title', 'like', '%'.$s[0].'%'.$s[1].'%')
+                ->orWhere('title', 'like', '%'.$s[1].'%'.$s[0].'%')
+                ->get();
+            }
+        }
+        if(!$request->s){
             $hotels = Hotel::all();
   
-        // }
+        }
        
 
         $hotels = $hotels->map(function($t) {
@@ -54,12 +54,14 @@ class HotelController extends Controller
 
         ]);
     }
-    public function showCatHotels(Country $country)
+    public function showCatHotels(Country $country, Request $request)
     {
+       if(!$request->s){ 
     $hotels = Hotel::where('country_id', $country->id)->get();
-
+       }
     return view('back.hotels.index', [
-    'hotels' => $hotels
+    'hotels' => $hotels,
+    's' => $request->s ?? ''
     ]);
     }
 

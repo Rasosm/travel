@@ -14,13 +14,13 @@
                 <div class="row justify-content-start">
                     <div class="col-2">
                         <div class="mb-3">
-                            <label class="form-label">Paieška</label>
+                            <label class="form-label"></label>
                             <input type="text" class="form-control" name="s" value="{{$s}}">
                         </div>
                     </div>
                     <div class=" col-4">
                         <div class="head-buttons">
-                            <button type="submit" class="btn btn-outline-success" style="margin-top: 30px">Ieškoti</button>
+                            <button type="submit" class="btn btn-outline-success" style="margin-top: 22px">Search</button>
 
                         </div>
                     </div>

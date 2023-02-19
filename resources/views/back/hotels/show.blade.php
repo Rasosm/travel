@@ -1,7 +1,7 @@
 @extends('layouts.app')
 
 @section('content')
-@section('title', 'Edit Hotel')
+@section('title', 'Hotel')
 
 
 <div class="container">
@@ -23,12 +23,12 @@
                         {{$hotel->title}}
                     </div>
                     <div class="mb-3">
-                        <label class="form-label">Duration</label>
+                        <label class="form-label">Duration:</label>
                         {{$hotel->duration}} nights
                     </div>
 
                     <div class="mb-3">
-                        <label class="form-label">Price</label>
+                        <label class="form-label">Price:</label>
                         {{$hotel->price}} eur
                     </div>
 

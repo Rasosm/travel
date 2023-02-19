@@ -7,25 +7,25 @@
 <div class="container">
     <div class="row justify-content-center">
 
-        {{-- <form action="{{route('hotels-index')}}" method="get">
-        <div class="container">
-            <div class="row justify-content-end">
-                <div class="col-2">
-                    <div class="mb-3">
-                        <label class="form-label"></label>
-                        <input type="text" class="form-control" name="s" value="{{$s}}">
+        <form action="{{route('hotels-index')}}" method="get">
+            <div class="container">
+                <div class="row justify-content-end">
+                    <div class="col-2">
+                        <div class="mb-3">
+                            <label class="form-label"></label>
+                            <input type="text" class="form-control" name="s" value="{{$s}}">
 
 
+                        </div>
                     </div>
-                </div>
-                <div class=" col-1">
-                    <div class="head-buttons">
-                        <button type="submit" class="btn btn-outline-primary mt-4">Search</button>
+                    <div class=" col-1">
+                        <div class="head-buttons">
+                            <button type="submit" class="btn btn-outline-primary mt-4">Search</button>
+                        </div>
                     </div>
                 </div>
             </div>
-        </div>
-        </form> --}}
+        </form>
 
 
 
@@ -99,9 +99,9 @@
         <div class="col-9">
             <div class="card">
 
-                <div class="card-header">
-                    <h3>All hotels</h3>
-
+                <div class="card-header card-header-cats">
+                    <h3><a href="{{route('hotels-index')}}">
+                            All hotels</a></h3>
                 </div>
 
 
