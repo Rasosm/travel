@@ -68,9 +68,9 @@
 
                     <div class="col-2 ">
                         <div class=" head-buttons">
-                            <button type="submit" class="btn btn-outline-success" style="margin-right: 5px; margin-top: 30px">Submit</button>
+                            <button type="submit" class="btn btn-outline-success" style="margin-right: 5px; margin-top: 30px">Show</button>
 
-                            <a href="{{route('start')}}" class="btn btn-outline-success" style="margin-top: 30px">Update</a>
+                            <a href="{{route('start')}}" class="btn btn-outline-success" style="margin-top: 30px">Reset</a>
 
 
 

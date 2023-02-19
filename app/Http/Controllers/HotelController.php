@@ -8,6 +8,7 @@ use Illuminate\Http\Request;
 use Barryvdh\DomPDF\Facade\Pdf;
 use Carbon\Carbon;
 use App\Services\CartService;
+use Illuminate\Support\Facades\Validator;
 
 class HotelController extends Controller
 {
@@ -84,6 +85,35 @@ class HotelController extends Controller
      */
     public function store(Request $request)
     {
+        $validator = Validator::make(
+        $request->all(),
+        [
+        
+        'hotel_title' => 'required|min:3|max:100|regex:/^([a-zA-ZąčęėįšųūžĄČĘĖĮŠŲŪŽ\s]+){3,}$/',
+        'hotel_start' => 'required',
+        'hotel_duration' => 'required|numeric|min:1|max:14',
+        'hotel_price' => 'required|regex:/^[1-9]\d*(\.\d{1,2})?$/',
+
+        ],
+        [
+            'hotel_title.required' => 'Please enter hotel name',
+            'hotel_title.min' => 'Please enter at least 3 characters',
+            'hotel_title.max' => 'Please enter correct hotel name. Hotel name has too many characters',
+            'hotel_title.regex' => 'Please enter correct hotel name',
+            'hotel_start.required' => 'Please enter date',
+            'hotel_duration.required' => 'Please enter duration',
+            'hotel_duration.numeric' => 'Please enter correct duration',
+            'hotel_duration.min' => 'Travel duration can be at least 1 night',
+            'hotel_duration.max' => 'Travel duration can not be more than 14 night',
+            'hotel_price.required' => 'Please enter price',
+            'hotel_price.regex' => 'Please enter correct price',
+        ]);
+            
+            if ($validator->fails()) {
+                $request->flash();
+                return redirect()->back()->withErrors($validator);
+            }
+
         $hotel = new Hotel;
 
          if ($request->file('photo')) {
@@ -118,9 +148,29 @@ class HotelController extends Controller
         //     'start' => $start,
         //     'end' => $end,
         // ]);
+        // dump($hotel->hotelCountry->season_start);
+
+        // if (($hotel->hotelCountry->season_start < $request->hotel_start) || ($hotel->hotelCountry->season_end > $request->hotel_start)) {
+        //     $request->flash();
+        //     return redirect()->back()->with('not', 'Please enter correct dates. In ' . ' ' . $hotel->hotelCountry->title . ' season is from ' . $hotel->hotelCountry->season_start . ' to ' . $hotel->hotelCountry->season_end);
+        // }
+        
+        $countryStart = $hotel->hotelCountry->season_start;
+        $countryEnd = $hotel->hotelCountry->season_end;
+        $hotelStart = $request->hotel_start;
+        $hotelEnd = $request->hotel_end;
+
+        
+        if (($countryStart > $hotelStart) || ($countryEnd < $hotelEnd) || ($countryEnd < $end)) {
+            $request->flash();
+            return redirect()->back()->with('not', 'Please enter correct dates. In ' . ' ' . $hotel->hotelCountry->title . ' season is from ' . $hotel->hotelCountry->season_start . ' to ' . $hotel->hotelCountry->season_end);
+         }
+
+        else {
 
         $hotel->save();
-        return redirect()->route('hotels-index', ['#'.$hotel->id]);
+        return redirect()->route('hotels-index', ['#'.$hotel->id])->with('ok', 'Hotel succesfully added');
+        }
     }
 
     /**
@@ -204,7 +254,7 @@ class HotelController extends Controller
     public function destroy(Hotel $hotel)
     {
         $hotel->delete();
-        return redirect()->back()->with('ok', 'Drink was deleted');
+        return redirect()->back()->with('ok', 'Hotel was deleted');
     }
 
     public function pdf(Hotel $hotel)

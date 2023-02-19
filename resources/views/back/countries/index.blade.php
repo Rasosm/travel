@@ -19,28 +19,31 @@
 
                                 <div>
                                     <h5>{{$country->title}}</h5>
-                                    <p>{{$country->season_start}} - {{$country->season_end}}</p>
-                                </div>
-                                @if(Auth::user()?->role == 'admin')
+                                    {{-- <div class="count">({{$country->countryHotels()->count()}})
+                                </div> --}}
 
-                                <div class="buttons mt-3" style="align-items: baseline">
-                                    <a href="{{route('countries-edit', $country)}}" class="btn btn-outline-success">Edit</a>
-                                    <form action="{{route('countries-delete', $country)}}" method="post">
-                                        <button type="submit" class="btn btn-outline-danger">Delete</button>
-                                        @csrf
-                                        @method('delete')
-                                    </form>
-                                </div>
-                                @endif
+                                <p>{{$country->season_start}} - {{$country->season_end}}</p>
                             </div>
-                        </li>
-                        @empty
-                        <li class="list-group-item">No countries yet</li>
-                        @endforelse
-                    </ul>
+                            @if(Auth::user()?->role == 'admin')
+
+                            <div class="buttons mt-3" style="align-items: baseline">
+                                <a href="{{route('countries-edit', $country)}}" class="btn btn-outline-success">Edit</a>
+                                <form action="{{route('countries-delete', $country)}}" method="post">
+                                    <button type="submit" class="btn btn-outline-danger">Delete</button>
+                                    @csrf
+                                    @method('delete')
+                                </form>
+                            </div>
+                            @endif
                 </div>
+                </li>
+                @empty
+                <li class="list-group-item">No countries yet</li>
+                @endforelse
+                </ul>
             </div>
         </div>
     </div>
+</div>
 </div>
 @endsection

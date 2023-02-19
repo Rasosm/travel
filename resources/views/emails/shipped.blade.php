@@ -1,8 +1,10 @@
 <x-mail::message>
-    # Order Shipped
+    # Travel reservation
 
-    Your order Number {{$ID}} has been shipped!
+    Your travel reservation has been confirmed!
+    Your order Number: {{$ID}}.
 
-    Thanks,<br>
-    Fancy Drinks Shop Team
+
+    Thank you,
+    Your travel team
 </x-mail::message>
