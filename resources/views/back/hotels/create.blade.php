@@ -29,7 +29,12 @@
                     <label class="form-label">Country</label>
                     <select class="form-select" name="country_id">
                         @foreach($countries as $country)
-                        <option value="{{$country->id}}">{{$country->title}} ({{$country->season_start}} - {{$country->season_end}})</option>
+                        <option value="{{$country->id}}" @if($country->id == old('country_id')) selected @endif>{{$country->title}} ({{$country->season_start}} - {{$country->season_end}})</option>
+
+
+
+
+
                         @endforeach
                     </select>
                 </div>
@@ -46,6 +51,8 @@
                             <label class="form-label">Check Out</label>
                             <input type="date" name="hotel_end" class="form-control" placeholder="season end" value="{{old('country_season')}}">
             </div> --}}
+
+
 
             <div class="mb-3">
                 <label class="form-label">Duration</label>
